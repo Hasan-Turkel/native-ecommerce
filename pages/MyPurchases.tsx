@@ -28,7 +28,7 @@ export default function MyPurchases({navigation}) {
   
      
       <FlatList
-        data={data}
+        data={data.reverse()}
         renderItem={renderProducts}
         style={styles.list}
         keyExtractor={keyExtractor}

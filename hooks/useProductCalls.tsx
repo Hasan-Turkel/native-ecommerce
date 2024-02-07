@@ -26,7 +26,7 @@ const useProductCalls = () => {
       
       const { data } = await axiosToken.get(`/users/${user?._id}`, 
       );
-      // console.log(data);
+      // console.log(data.data);
       setData(data.data.purchases)
  
     } catch (error) {
@@ -34,8 +34,30 @@ const useProductCalls = () => {
       // console.log(error.message);
     }
   };
+  const getBox = async () => {
+    try {
+      
+      const { data } = await axiosToken.get(`/users/${user?._id}`, 
+      );
+      // console.log(data.data);
+      setData(data.data.box)
+ 
+    } catch (error) {
+  
+      // console.log(error.message);
+    }
+  };
+  const updateBasket = async (values: any) => {
+    try {
+      const { data } = await axiosToken.put(`/users/${user._id}`, values);
+     
+      // console.log(data);
+    } catch (error:any) {
+      // console.log(error.message);
+    }
+  };
     
-  return {data, getProducts, getPurchases}
+  return {data, getProducts, getPurchases, updateBasket, getBox}
 }
 
 export default useProductCalls
