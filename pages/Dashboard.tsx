@@ -1,12 +1,14 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StatusBar, StyleSheet, Text, View } from "react-native";
 
-import Card from "../components/card";
+import Card from "../components/store/card";
 import useProductCalls from "../hooks/useProductCalls";
 import { useFocusEffect } from "@react-navigation/native";
 import { useCallback } from "react";
+import { useSelector } from "react-redux";
 
-export default function App() {
-  const user = false
+export default function Dashboard({navigation}) {
+  
+  const { user } = useSelector((state:any) => state.auth)
   const renderProducts = ({ item }) => <Card products={item} />;
   const keyExtractor = (item: any) => item.id.toString();
   const { data, getProducts } = useProductCalls();
@@ -19,10 +21,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar/>
 
       <View style={styles.textContainer}>
       <Text style={styles.text}>Turkel's E-Commerce</Text>
-      {!user&&<Text style={styles.text}>Login</Text>} 
+      {!user&&<Text style={styles.text} onPress={()=>navigation.navigate("Login")}>Login</Text>} 
       </View>
      
       <FlatList

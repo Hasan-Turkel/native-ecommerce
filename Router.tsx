@@ -7,6 +7,8 @@ import Register from "./pages/Register";
 import MyBasket from "./pages/MyBasket";
 import MyPurchases from "./pages/MyPurchases";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Text } from "react-native";
+import { useSelector } from "react-redux";
 
 
 
@@ -19,8 +21,11 @@ const Drawer = createDrawerNavigator();
 function Me() {
   return (
     <Drawer.Navigator
-      screenOptions={{
-        headerShown: false,
+      screenOptions={{headerTintColor:"white",
+      headerStyle:{
+        backgroundColor:"black"
+      },
+      headerRight:()=> <Text style={{padding:5,  color:"white", fontSize:20}} onPress={null}>Logout</Text>
       }}
     >
       <Drawer.Screen name="MyBasket" component={MyBasket} />
@@ -30,7 +35,7 @@ function Me() {
 }
 
 const Router = () => {
-  const  user  = false
+  const { user } = useSelector((state:any) => state.auth)
 
   return (
     <>
@@ -69,7 +74,10 @@ const Router = () => {
       ) : (
         <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        headerTintColor:"white",
+      headerStyle:{
+        backgroundColor:"black"
+      },
       }}
     >
       <Stack.Screen name="Dashboard" component={Dashboard} />
