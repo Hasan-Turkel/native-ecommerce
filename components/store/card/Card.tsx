@@ -1,7 +1,9 @@
 import React from 'react'
-import { Button, Image, Text, View } from 'react-native'
+import { Alert, Button, Image, Text, View } from 'react-native'
 import styles from './Card.style';
 import { useSelector } from 'react-redux';
+import useProductCalls from '../../../hooks/useProductCalls';
+import { useNavigation } from '@react-navigation/native'; 
 
 interface CardProps {
   products: {
@@ -12,6 +14,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({products}) => {
+  const { updateBasket } = useProductCalls();
+  const navigation:any = useNavigation()
 
    const { user } = useSelector((state:any) => state.auth)
     // console.log(products);
@@ -24,7 +28,8 @@ const Card: React.FC<CardProps> = ({products}) => {
           {user && (
             <Button
               title="Add to Basket"
-              onPress={null}
+              onPress={() => {updateBasket({ process: "add", item:products });
+            }}
             />
           )}
         </View>

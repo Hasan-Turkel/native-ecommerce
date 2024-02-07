@@ -51,9 +51,9 @@ const useProductCalls = () => {
     try {
       const { data } = await axiosToken.put(`/users/${user._id}`, values);
      
-      // console.log(data);
+      // console.log(values);
     } catch (error:any) {
-      // console.log(error.message);
+      // console.log(values);
     }
   };
     

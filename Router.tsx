@@ -9,6 +9,7 @@ import MyPurchases from "./pages/MyPurchases";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Text } from "react-native";
 import { useSelector } from "react-redux";
+import useAuthCalls from "./hooks/useAuthCalls";
 
 
 
@@ -18,14 +19,16 @@ const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 
+
 function Me() {
+  const { logout } = useAuthCalls();
   return (
     <Drawer.Navigator
       screenOptions={{headerTintColor:"white",
       headerStyle:{
         backgroundColor:"black"
       },
-      headerRight:()=> <Text style={{padding:5,  color:"white", fontSize:20}} onPress={null}>Logout</Text>
+      headerRight:()=> <Text style={{padding:5,  color:"white", fontSize:20}} onPress={()=>logout()}>Logout</Text>
       }}
     >
       <Drawer.Screen name="MyBasket" component={MyBasket} />
