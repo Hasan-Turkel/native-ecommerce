@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
         margin:3,
         padding:20,
         borderWidth:0.1,
-        gap:10
+        gap:10,
+        position:"relative"
       },
       pieceContainer:{
         flexDirection:"row",
@@ -43,7 +44,14 @@ const styles = StyleSheet.create({
         padding:4,
         paddingHorizontal:20,
         borderWidth:0.2,
-
+      },
+      delete:{
+        position:"absolute",
+        top:20,
+        end:20,
+        fontSize:30,
+        color:"red",
+        fontWeight:"bold"
 
       }
 

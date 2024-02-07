@@ -16,6 +16,7 @@ const BasketCard: React.FC<BasketCardProps> = ({ products, handleBasket }) => {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={{ uri: products.image }} />
+      <Text style={styles.delete}  onPress={() => handleBasket("delete", products)}>X</Text>
       <Text style={styles.text}>{products.title}</Text>
       <Text style={styles.text}>{products.price} $</Text>
       <View style={styles.pieceContainer}>
